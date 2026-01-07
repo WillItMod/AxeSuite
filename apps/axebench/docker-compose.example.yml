@@ -1,0 +1,16 @@
+services:
+  axebench:
+    image: ghcr.io/willitmod/axebench-release:v3.0.2-r1
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    environment:
+      AXE_HOST: 0.0.0.0
+      AXE_PORT: 5000
+      HOME: /data
+    volumes:
+      - axebench-data:/data
+
+volumes:
+  axebench-data:
+

@@ -1,0 +1,21 @@
+services:
+  axesim:
+    image: ghcr.io/willitmod/axesim-release:v1.0.9
+    restart: unless-stopped
+    ports:
+      - "8081:8081"
+      - "8091-8100:8091-8100"
+    environment:
+      AXESIM_HOME: /data
+      AXESIM_PORT: 8081
+      AXESIM_HOST: 0.0.0.0
+      AXESIM_PUBLISH_MINERS: 1
+      AXESIM_PUBLISH_HOST: 0.0.0.0
+      AXESIM_PUBLISH_START_PORT: 8091
+      AXESIM_PUBLISH_COUNT: 10
+    volumes:
+      - axesim-data:/data
+
+volumes:
+  axesim-data:
+

@@ -1,0 +1,101 @@
+services:
+  init:
+    image: alpine:3.20
+    entrypoint: ["/bin/sh", "/standalone/init.sh"]
+    environment:
+      RPC_USER: dgb
+      RPC_PASSWORD: ${APP_PASSWORD:-changeme}
+      DGB_P2P_PORT: 12024
+      DGB_RPC_PORT: 14022
+      DGB_ZMQ_HASHBLOCK_PORT: 28344
+      DB_HOST: postgres
+      DB_USER: miningcore
+      DB_PASSWORD: ${APP_PASSWORD:-changeme}
+      DB_NAME: miningcore
+
+      # Default VarDiff profile (SHA256)
+      SHA256_MINDIFF: 128
+      SHA256_STARTDIFF: 512
+      SHA256_MAXDIFF_JSON: 8192
+
+      # Default VarDiff profile (Scrypt)
+      SCRYPT_MINDIFF: 1
+      SCRYPT_STARTDIFF: 1
+      SCRYPT_MAXDIFF_JSON: 128
+    volumes:
+      - ./data:/data
+      - ./standalone:/standalone:ro
+
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    shm_size: "256mb"
+    environment:
+      POSTGRES_USER: miningcore
+      POSTGRES_PASSWORD: ${APP_PASSWORD:-changeme}
+      POSTGRES_DB: miningcore
+    volumes:
+      - ./data/pool/postgres:/var/lib/postgresql/data
+      - ./standalone/miningcore-createdb.sql:/docker-entrypoint-initdb.d/01-miningcore.sql:ro
+
+  dgbd:
+    image: ghcr.io/willitmod/digibyte:8.22.2
+    user: "1000:1000"
+    restart: unless-stopped
+    depends_on:
+      init:
+        condition: service_completed_successfully
+    stop_grace_period: 15m30s
+    ports:
+      - "12024:12024/tcp" # P2P
+    volumes:
+      - ./data/node:/data
+      - ./standalone/dgb-entrypoint.sh:/dgb-entrypoint.sh:ro
+    entrypoint: ["/bin/sh", "/dgb-entrypoint.sh"]
+    healthcheck:
+      test: ["CMD-SHELL", "dgb-cli -datadir=/data getblockchaininfo >/dev/null 2>&1"]
+      interval: 30s
+      timeout: 10s
+      retries: 20
+      start_period: 2m
+
+  miningcore:
+    image: ghcr.io/willitmod/axedgb-miningcore:axedgb-0.8.10-r22
+    restart: unless-stopped
+    depends_on:
+      - postgres
+      - dgbd
+      - init
+    stop_grace_period: 30s
+    ports:
+      - "5678:3333/tcp" # Stratum v1 (SHA256)
+      - "5679:3334/tcp" # Stratum v1 (Scrypt)
+    volumes:
+      - ./data/pool/config/miningcore.json:/app/config.json:ro
+      - ./data/pool/config/coins.json:/app/coins.json:ro
+
+  axedgb-app:
+    image: ghcr.io/willitmod/axedgb-app:0.8.97
+    user: "1000:1000"
+    restart: unless-stopped
+    stop_grace_period: 30s
+    depends_on:
+      - miningcore
+      - dgbd
+    ports:
+      - "21213:3000" # UI/API
+    volumes:
+      - ./data:/data
+    environment:
+      DGB_RPC_HOST: dgbd
+      DGB_RPC_PORT: 14022
+      DGB_RPC_USER: dgb
+      DGB_RPC_PASS: ${APP_PASSWORD:-changeme}
+      MININGCORE_API_URL: http://miningcore:4000
+      MININGCORE_POOL_ID: dgb-sha256-1
+      MININGCORE_POOL_IDS: sha256:dgb-sha256-1,scrypt:dgb-scrypt-1
+      STRATUM_PORTS: sha256:5678,scrypt:5679
+      MININGCORE_CONF_PATH: /data/pool/config/miningcore.json
+      APP_CHANNEL: DOCKER
+      STATIC_DIR: /app/static
+

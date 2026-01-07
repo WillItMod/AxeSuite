@@ -1,0 +1,17 @@
+services:
+  axelive:
+    image: ghcr.io/willitmod/axelive-release:v1.2-r1
+    restart: unless-stopped
+    ports:
+      - "5210:5210"
+    environment:
+      AXELIVE_HOME: /data
+      AXELIVE_PORT: 5210
+      AXELIVE_HOST: 0.0.0.0
+      AXELIVE_OPEN_UI: 0
+    volumes:
+      - axelive-data:/data
+
+volumes:
+  axelive-data:
+

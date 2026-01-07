@@ -1,0 +1,39 @@
+{
+  "digibyte-sha256": {
+    "name": "Digibyte Sha256",
+    "canonicalName": "Digibyte",
+    "symbol": "DGB",
+    "family": "bitcoin",
+    "website": "https://digibyte.org/",
+    "market": "https://coinmarketcap.com/currencies/digibyte/",
+    "twitter": "https://twitter.com/digibytecoin",
+    "telegram": "https://t.me/DigiByteCoin",
+    "discord": "",
+    "coinbaseHasher": { "hash": "sha256d" },
+    "headerHasher": { "hash": "sha256d" },
+    "blockHasher": { "hash": "reverse", "args": [ { "hash": "sha256d" } ] },
+    "blockTemplateRpcExtraParams": ["sha256d"],
+    "explorerBlockLink": "https://chainz.cryptoid.info/dgb/block.dws?$$height$$.htm",
+    "explorerTxLink": "https://chainz.cryptoid.info/dgb/tx.dws?{0}.htm",
+    "explorerAccountLink": "https://chainz.cryptoid.info/dgb/address.dws?{0}.htm"
+  },
+  "digibyte-scrypt": {
+    "name": "Digibyte Scrypt",
+    "canonicalName": "Digibyte",
+    "symbol": "DGB",
+    "family": "bitcoin",
+    "website": "https://digibyte.org/",
+    "market": "https://coinmarketcap.com/currencies/digibyte/",
+    "twitter": "https://twitter.com/digibytecoin",
+    "telegram": "https://t.me/DigiByteCoin",
+    "discord": "",
+    "coinbaseHasher": { "hash": "sha256d" },
+    "headerHasher": { "hash": "scryptn", "args": [1024, 1, 1] },
+    "blockHasher": { "hash": "reverse", "args": [ { "hash": "scryptn", "args": [1024, 1, 1] } ] },
+    "blockTemplateRpcExtraParams": ["scrypt"],
+    "explorerBlockLink": "https://chainz.cryptoid.info/dgb/block.dws?$$height$$.htm",
+    "explorerTxLink": "https://chainz.cryptoid.info/dgb/tx.dws?{0}.htm",
+    "explorerAccountLink": "https://chainz.cryptoid.info/dgb/address.dws?{0}.htm"
+  }
+}
+
