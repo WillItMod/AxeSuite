@@ -18,6 +18,14 @@ Install from the WillItMod main store:
 - Username (recommended): `YOUR_DGB_ADDRESS.<worker-name>`
 - Password: anything
 
+### Stratum locking (important)
+
+For safety, Stratum may be **locked to localhost** until:
+1) you set a valid legacy/base58 DigiByte payout address in Settings, and
+2) you restart the app (so the init container can apply the payout + varDiff settings).
+
+If the UI says `UI Online` but not `Ready`, check the Pool tab status banner for the exact reason.
+
 ### Payout address rules
 
 - Payout address must be legacy/base58 DigiByte (starts with `D`/`S`).
@@ -30,6 +38,10 @@ Recent builds include a `Node RAM (dbcache)` selector:
 - `1GB / 2GB / 4GB / 8GB`
 
 This controls DigiByte Core's `-dbcache` and can reduce RAM usage on small hosts.
+
+Notes:
+- DigiByte is extremely resource intensive compared to BTC/BCH (many more blocks). Low-RAM machines can struggle.
+- If the node repeatedly indexes/loads blocks and appears to “loop”, it is often a RAM/disk constraint issue.
 
 ## Docker (self-host)
 

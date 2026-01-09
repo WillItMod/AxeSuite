@@ -24,6 +24,10 @@ Install from the WillItMod main store:
 - For maximum compatibility, use a legacy BCH Base58 address (`1...` / `3...`).
 - Many wallets show CashAddr (`q...` / `p...`); AxeBCH converts it locally for ckpool compatibility.
 
+### Difficulty presets
+
+ckpool expects **whole-number** difficulties. Fractional difficulties (like `0.001`) are not supported and are ignored/fallback to defaults.
+
 ## Docker (self-host)
 
 Use `apps/axebch/docker-compose.example.yml`.

@@ -34,8 +34,22 @@ Store:
 
 - App id: `willitmod-dev-dgb` (yes, "dev" is part of the id even in the main store)
 - UI: via Umbrel dashboard (internal port `21213`)
-- Stratum v1 (host port): `5678`
-- Miner URL: `stratum+tcp://<your-umbrel-ip>:5678`
+- Stratum v1 (host ports):
+  - SHA256: `5678` (`stratum+tcp://<your-umbrel-ip>:5678`)
+  - Scrypt: `5679` (`stratum+tcp://<your-umbrel-ip>:5679`)
+
+Notes:
+- Stratum can be **locked to localhost** until you set a valid legacy payout address in Settings and restart the app.
+
+### AxeBTC (alpha, DEV store)
+
+- App id: `willitmod-dev-btc`
+- UI: via Umbrel dashboard (internal port `21214`)
+- Stratum v1 (host port): `7890`
+- Miner URL: `stratum+tcp://<your-umbrel-ip>:7890`
+
+Notes:
+- This app currently ships via the **dev store**: `https://github.com/WillItMod/umbrel-dev-community-store`
 
 ## Verify on your node
 
