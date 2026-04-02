@@ -12,11 +12,21 @@ Install from the WillItMod main store:
 
 - `https://github.com/WillItMod/umbrel-community-store`
 
+For preview / test builds, check the WillItMod dev store too:
+
+- `https://github.com/WillItMod/umbrel-dev-community-store`
+
 ### Miner connection (SHA256 pool)
 
-- URL: `stratum+tcp://<your-umbrel-ip>:5678`
+- URL: `stratum+tcp://<host-ip>:5678`
+- If the miner UI wants separate fields: host = `<host-ip>`, port = `5678`
 - Username (recommended): `YOUR_DGB_ADDRESS.<worker-name>`
 - Password: anything
+
+Use the IP of the machine hosting the app:
+
+- On `5tratumOS`, use the `5tratumOS` machine's LAN IP
+- On `Umbrel`, use the Umbrel host IP
 
 ### Stratum locking (important)
 
@@ -60,6 +70,5 @@ Open the UI:
 - `http://localhost:21213`
 
 Connect miners:
-- SHA256: `stratum+tcp://<your-host-ip>:5678`
-- Scrypt: `stratum+tcp://<your-host-ip>:5679`
-
+- SHA256: `stratum+tcp://<host-ip>:5678`
+- Scrypt: `stratum+tcp://<host-ip>:5679`

@@ -1,6 +1,6 @@
-# Umbrel (Main Store)
+# Umbrel Stores
 
-## Add the WillItMod store
+## Add the WillItMod main store
 
 Use the Umbrel UI:
 
@@ -9,7 +9,17 @@ Use the Umbrel UI:
 3) Paste: `https://github.com/WillItMod/umbrel-community-store`
 4) Install/update apps from the store view
 
-See `docs/umbrel/apps.md` for current app ids, ports, and miner connection strings.
+## Add the WillItMod dev store
+
+Use the same flow:
+
+1) Open Umbrel dashboard
+2) `Settings -> App Stores -> Add`
+3) Paste: `https://github.com/WillItMod/umbrel-dev-community-store`
+4) Install/update apps from the store view
+
+See `docs/umbrel/apps.md` for current app ids, ports, versions, and miner connection strings.
+See `docs/releases.md` for the current release/store matrix and the best changelog source per app.
 
 ## What gets installed
 

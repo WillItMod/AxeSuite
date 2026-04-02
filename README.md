@@ -6,8 +6,13 @@ Central hub for the Axe family of apps:
 - **AxeLive** - Bitaxe device management (fan/work modes, groups, live control) (web UI)
 - **AxeSim** - virtual miner simulator (for testing AxeLive/AxeBench)
 - **AxeBCH** - Bitcoin Cash full node + solo pool (Umbrel app / Docker)
+- **AxeBCH2** - BCH2 full node + solo pool (dev store)
+- **AxeBC2** - BC2 full node + solo pool (dev store)
 - **AxeDGB** - DigiByte full node + solo pool (Umbrel app / Docker)
-- **AxeBTC** - Bitcoin full node + solo pool (Umbrel app, alpha)
+- **AxeBTC** - Bitcoin full node + solo pool (Umbrel app / Docker)
+- **AxePPC** - Peercoin full node + solo pool (dev store)
+- **AxeXEC** - eCash full node + solo pool (dev store)
+- **PowPow** - LTC + DOGE merged-mining stack (dev store)
 - **AxeMIG** - firmware + tuning utilities (downloads)
 
 This repo is intentionally documentation-first: it links to the canonical app repos, Umbrel store packages, container images, and release downloads.
@@ -16,6 +21,7 @@ This repo is intentionally documentation-first: it links to the canonical app re
 
 - Umbrel main store: `https://github.com/WillItMod/umbrel-community-store`
 - Umbrel dev store: `https://github.com/WillItMod/umbrel-dev-community-store`
+- 5tratumOS host/update repo: `https://github.com/WillItMod/5tratum`
 - Releases:
   - AxeBench: `https://github.com/WillItMod/AxeBench-Release`
   - AxeLive: `https://github.com/WillItMod/AxeLive-Release`
@@ -26,6 +32,7 @@ This repo is intentionally documentation-first: it links to the canonical app re
 
 - Install (Umbrel): `docs/umbrel/README.md`
 - Umbrel app ids + ports: `docs/umbrel/apps.md`
+- Current versions + changelog sources: `docs/releases.md`
 - Umbrel troubleshooting: `docs/umbrel/troubleshooting.md`
 - Self-host (Docker): `docs/docker/README.md`
 - Downloads: `downloads/README.md`
@@ -50,12 +57,28 @@ Then install the apps from the store UI:
 - AxeBench
 - AxeLive
 - AxeSim
+- AxeMIG
 - AxeBCH
+- AxeBTC
 - AxeDGB
 
-For **alpha/dev builds** (including AxeBTC), add the dev store too:
+For **alpha/dev builds** and the newer experimental apps, add the dev store too:
 
 - Store URL: `https://github.com/WillItMod/umbrel-dev-community-store`
+
+The dev store currently carries:
+
+- AxeBCH2
+- AxeBC2
+- AxeBench (Dev)
+- AxeLive (Dev)
+- AxeMIG
+- AxeBCH
+- AxeBTC
+- AxeDGB
+- PowPow
+- AxePPC
+- AxeXEC
 
 If you prefer SSH (advanced), see `docs/umbrel/cli.md`.
 
@@ -74,10 +97,12 @@ Pick an app under `apps/` and use its `docker-compose.example.yml`:
 Direct downloads live in each app's release repo. Start here:
 
 - `downloads/README.md`
+- `docs/releases.md`
 
 ## Documentation
 
 - Umbrel: `docs/umbrel/README.md`
+- Releases and changelog sources: `docs/releases.md`
 - Umbrel troubleshooting ("Updating 1%", pinned image tags, recovery): `docs/umbrel/troubleshooting.md`
 - Docker: `docs/docker/README.md`
 - App docs: `apps/*/README.md`
