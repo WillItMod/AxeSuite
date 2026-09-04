@@ -29,6 +29,7 @@ This page is the central reference for current app coverage, current store versi
 - `AxeSim` - `1.0.9` (manifest last touched `2025-12-29`)
 - `AxeBTC` - `0.7.82.4` (manifest last touched `2026-02-05`)
 - `AxeBCH` - `0.7.153` (manifest last touched `2026-02-05`)
+- `AxeBC2` - `0.1.10` (manifest last touched `2026-09-04`)
 - `AxeDGB` - `0.9.166` (manifest last touched `2026-03-04`)
 
 ## Dev Store Snapshot
@@ -39,7 +40,7 @@ This page is the central reference for current app coverage, current store versi
 - `AxeBench (Dev)` - `4.0.20` (manifest last touched `2026-03-19`)
 - `AxeLive (Dev)` - `1.4-dev` (manifest last touched `2026-02-16`)
 - `AxeMIG` - `0.1.17` (manifest last touched `2026-02-06`)
-- `AxeBC2` - `0.1.6-dev` (manifest last touched `2026-02-06`)
+- `AxeBC2` - `0.1.10-dev` (manifest last touched `2026-09-04`)
 - `AxeBCH` - `0.8.3-rc1-dev` (manifest last touched `2026-03-04`)
 - `AxeBTC` - `0.7.82.4-dev` (manifest last touched `2026-02-06`)
 - `AxeDGB` - `0.9.166-dev` (manifest last touched `2026-03-18`)
@@ -158,6 +159,7 @@ This is not a perfect human-written changelog for every app, but it is a reliabl
 
 ### AxeBC2
 
+- `2026-09-04` - `AxeBC2 DEV 0.1.10-dev and MAIN 0.1.10: BitcoinII Core 31.1, mandatory one-time full reindex, and ShockWave consensus support`
 - `2026-02-06` - `AxeBC2 DEV: bump to 0.1.6-dev`
 - `2026-02-06` - `DEV store: disclaimers + AxeBC2 0.1.5-dev`
 
